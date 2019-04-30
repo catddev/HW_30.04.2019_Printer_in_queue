@@ -21,6 +21,11 @@ void Printer::operator()(string name, int wait, int serve)
 	this->serve = serve;
 }
 
+void Printer::operator()(int serve)
+{
+	this->serve = serve;
+}
+
 Printer Printer::operator+=(int value)
 {
 	wait += value;
@@ -30,6 +35,11 @@ Printer Printer::operator+=(int value)
 int Printer::getServe()
 {
 	return serve;
+}
+
+int Printer::getWait()
+{
+	return wait;
 }
 
 ostream & operator<<(ostream & os, Printer p)
