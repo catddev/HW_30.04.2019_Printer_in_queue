@@ -21,19 +21,19 @@ void Printer::operator()(string name, int wait, int serve)
 	this->serve = serve;
 }
 
-Printer Printer::operator+=(Printer obj)
+Printer Printer::operator+=(int value)
 {
-	wait = obj.wait + obj.serve;
+	wait += value;
 	return *this;
 }
 
-int Printer::getWait()
+int Printer::getServe()
 {
-	return wait;
+	return serve;
 }
 
 ostream & operator<<(ostream & os, Printer p)
 {
-	os << p.name << "	waiting time: " << p.wait << "	serving time: " << p.serve << endl;
+	os << p.name << "	waiting time: "<< setw(3) << p.wait << "	serving time: " << p.serve << endl;
 	return os;
 }

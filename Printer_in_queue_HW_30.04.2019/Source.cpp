@@ -1,7 +1,9 @@
 ﻿#include"Printer.h"
+#include<ctime>
 
 int main() {
 
+	srand(time(NULL));
 	Printer p[6];
 	Queue<Printer> q;
 	double sum = 0;
@@ -11,20 +13,20 @@ int main() {
 		p[i](to_string(i + 1), 0, t);
 	}
 
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < 6; i++)
 		q.push(p[i]);
-		if(i!=5)
-			p[i + 1]+=p[i];
-	}
+
 	q.print();
+	cout << endl;
 	int n = q.size();
 
 	while (!q.empty()) {
-		sum += q.front().getWait();
+		q.front() += sum; //changing waiting time
+		cout << q.front() << endl;
+		sum += q.front().getServe();
 		q.pop();
 	}
-	sum /= n;
-	cout << "Average waiting time in a queue is: " << sum << " seconds" << endl << endl;
+	cout << "Average waiting time in a queue is: " << sum / n << " seconds" << endl << endl;
 
 	system("pause");
 	return 0;
