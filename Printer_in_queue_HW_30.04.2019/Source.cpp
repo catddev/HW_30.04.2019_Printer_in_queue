@@ -24,7 +24,7 @@ int main() {
 		q.front() += sum; //changing waiting time
 		cout << q.front() << endl;
 		sum += q.front().getServe();
-		q.pop();
+		q.pop();//printing
 	}
 	cout << "Average waiting time in a queue is: " << sum / n << " seconds" << endl << endl;
 
