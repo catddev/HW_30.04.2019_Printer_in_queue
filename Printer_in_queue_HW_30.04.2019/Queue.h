@@ -103,7 +103,6 @@ inline void Queue<T>::print()
 {
 	for (int i = 0; i < cur_size; i++)
 		cout << ptr[i] << endl;
-	cout << endl;
 }
 
 template<typename T>

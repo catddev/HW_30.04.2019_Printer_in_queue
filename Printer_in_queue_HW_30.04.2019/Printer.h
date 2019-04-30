@@ -17,7 +17,9 @@ public:
 	Printer(string name, int wait, int serve);
 	
 	void operator()(string name, int wait, int serve);
-	Printer operator++(int v);
+	Printer operator+=(Printer obj);
+	int getWait();
+
 	friend ostream& operator<<(ostream& os, Printer p);
 };
 ostream& operator<<(ostream& os, Printer p);
