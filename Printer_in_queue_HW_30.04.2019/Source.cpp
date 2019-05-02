@@ -4,20 +4,21 @@
 int main() {
 
 	srand(time(NULL));
-	Printer p[6];
+	Printer tmp;
 	Queue<Printer> q;
 	double sum = 0;
 	double total = 0;
+	int n = 6;
 
-	for (int i = 0; i < 6; i++) {
-		p[i](to_string(i + 1), 0, 0);
-		q.push(p[i]);
+	for (int i = 0; i < n; i++) {
+		tmp(to_string(i + 1), 0, 0);
+		q.push(tmp);
 	}
 
-	cout << "Before getting into the queue:" << endl;
+	cout << "Before printing in queue:" << endl;
 	q.print();
 	cout << endl;
-	int n = q.size();
+	int size = q.size();//saving the initial size
 
 	cout << "AFTER PRINTING:" << endl;
 	//now printing process
@@ -26,15 +27,15 @@ int main() {
 		int t = rand() % 20 + 10;
 		q.front()(t);//counting serving time for this printer
 		
-		sum += q.front().getWait();
+		sum += q.front().getWait();//counting waiting time for this printer
 		q.front() += sum; //changing waiting time
 
 		cout << q.front() << endl;//printing
-		sum += q.front().getServe();
-		total += q.front().getWait();
-		q.pop();
+		sum += q.front().getServe();//add time of the last printing process
+		total += q.front().getWait();//counter for waiting times of all printer in queue
+		q.pop();//delete from queue
 	}
-	cout << "Average waiting time in the queue is: " << total / n << " seconds" << endl << endl;
+	cout << "Average waiting time in the queue is: " << total << "/" << size << "=" << total / size << " seconds" << endl << endl;
 
 	system("pause");
 	return 0;
